@@ -12,6 +12,8 @@
  * @returns {boolean}
  */
 
+
+// with recursion
 class Solution {
     isPowerofTwo(n) {
         if(n === 1)
@@ -20,4 +22,11 @@ class Solution {
           return false;
         return this.isPowerofTwo(Math.floor(n / 2));
     };
+};
+
+// without Recursion
+class Solution2 {
+  isPowerofTwo(n) {
+      return ((n & (n - 1)) === 0);
+  };
 };
