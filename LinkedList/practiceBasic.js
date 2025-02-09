@@ -58,6 +58,10 @@ class LinkedList {
   };
 
   printLL(head) {
+    if(head === undefined){
+      console.log('Head does not exist');
+      return;
+    }
     let newNode = head;
     let ll = '';
     while(newNode !== null) {
@@ -89,7 +93,25 @@ class LinkedList {
 
     console.log(key + ': not found');    
   };
-  
+
+  deleteAtPos(pos, head) {
+    if(pos === 1) {
+      head = head.next;
+      return head;
+    };
+    let prev = null; let curr = head; let count = 1;
+    while(count !== pos && curr !== null) {
+      prev = curr;
+      curr = curr.next;
+      count++
+    };
+    if(curr === null) {
+      console.log('position out of bound');
+      return;
+    };
+    prev.next = curr.next;
+    return head;
+  };  
 };
 
 const list = new LinkedList();
@@ -108,6 +130,11 @@ list.insertAtTail(10, head);
 
 // list.printLL(newHead2);
 // list.length(newHead2);
+// list.search(67, head);
 
-list.search(67, head);
+
+list.printLL(head);
+const newHead = list.deleteAtPos(6, head);
+list.printLL(newHead);
+
 
