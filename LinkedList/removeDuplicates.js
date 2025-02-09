@@ -16,6 +16,10 @@ class Solution {
       return head;
     };
   };
+
+  // TC: O(n)
+  // For deletion we need three nodes(1 -> 2 -> 3) or 3 information
+  // prev -> curr -> curr.next or curr -> curr.next -> curr.next.next
   
   
   const solution = new Solution();

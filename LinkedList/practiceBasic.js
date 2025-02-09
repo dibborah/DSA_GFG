@@ -117,10 +117,11 @@ class LinkedList {
 const list = new LinkedList();
 
 const head = list.insertAtHead(2);
-list.insertAtTail(2, head);
-list.insertAtTail(4, head);
-
 list.insertAtTail(5, head);
+list.insertAtTail(6, head);
+
+list.insertAtTail(2, head);
+list.insertAtTail(1, head);
 
 
 // list.insertAtTail(9, head);
@@ -135,7 +136,7 @@ list.insertAtTail(5, head);
 // list.search(67, head);
 
 
-list.printLL(head);
+// list.printLL(head);
 // const newHead = list.deleteAtPos(6, head);
 // list.printLL(newHead);
 
@@ -145,26 +146,66 @@ list.printLL(head);
 // 2 -> 4 -> 2
 
 
+// class Solution {
+//   // Function to remove duplicates from sorted linked list.
+//   removeDuplicates(head) {
+//     let prev = head;
+//     let curr = head.next;
+//     while(curr !== null) {
+//       if(prev.val !== curr.val) {
+//         prev = curr;
+//         curr = curr.next;
+//       }else {
+//         curr = curr.next;
+//         prev.next = curr;
+//       };
+//     };
+//     return head;
+//   };
+// };
+
+
+// const solution = new Solution();
+// const newHead = solution.removeDuplicates(head);
+// list.printLL(newHead);
+
+
+
+// User function Template for javascript
+/**
+ * Definition for singly Link List Node
+ * class Node{
+ *     constructor(x){
+ *         this.data = x
+ *         this.next = null
+ *     }
+ * }
+ * @param {Node} head
+ * @returns {Node}
+ */
+
 class Solution {
-  // Function to remove duplicates from sorted linked list.
-  removeDuplicates(head) {
-    let prev = head;
-    let curr = head.next;
-    while(curr !== null) {
-      if(prev.val !== curr.val) {
-        prev = curr;
-        curr = curr.next;
-      }else {
-        curr = curr.next;
-        prev.next = curr;
-      };
+  // Function to move last element to front in a linked list.
+  moveToFront(head) {
+    let prev = null
+    let curr = head;
+    while(curr.next !== null) {
+      prev = curr;
+      curr = curr.next;
     };
-    return head;
+
+    if(prev === null)
+      return curr;
+
+    prev.next = null;
+    curr.next = head;
+    return curr;
   };
 };
 
 
+list.printLL(head);
 const solution = new Solution();
-const newHead = solution.removeDuplicates(head);
+if (!head) return head;
+const newHead = solution.moveToFront(head);
 list.printLL(newHead);
-
