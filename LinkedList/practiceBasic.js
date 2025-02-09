@@ -116,13 +116,15 @@ class LinkedList {
 
 const list = new LinkedList();
 
-const head = list.insertAtHead(5);
-list.insertAtTail(6, head);
-list.insertAtTail(7, head);
+const head = list.insertAtHead(2);
+list.insertAtTail(2, head);
+list.insertAtTail(4, head);
 
-list.insertAtTail(8, head);
-list.insertAtTail(9, head);
-list.insertAtTail(10, head);
+list.insertAtTail(5, head);
+
+
+// list.insertAtTail(9, head);
+// list.insertAtTail(10, head);
 
 // list.insertAtTail(11, head);
 // const newHead = list.insertAtHead(5, head);
@@ -134,7 +136,35 @@ list.insertAtTail(10, head);
 
 
 list.printLL(head);
-const newHead = list.deleteAtPos(6, head);
-list.printLL(newHead);
+// const newHead = list.deleteAtPos(6, head);
+// list.printLL(newHead);
 
+
+// 2    ->  4   ->  4   ->  2
+// prev -> curr
+// 2 -> 4 -> 2
+
+
+class Solution {
+  // Function to remove duplicates from sorted linked list.
+  removeDuplicates(head) {
+    let prev = head;
+    let curr = head.next;
+    while(curr !== null) {
+      if(prev.val !== curr.val) {
+        prev = curr;
+        curr = curr.next;
+      }else {
+        curr = curr.next;
+        prev.next = curr;
+      };
+    };
+    return head;
+  };
+};
+
+
+const solution = new Solution();
+const newHead = solution.removeDuplicates(head);
+list.printLL(newHead);
 
