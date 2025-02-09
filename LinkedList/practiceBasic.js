@@ -32,6 +32,30 @@ class LinkedList {
     newNode.next = node;
     return head;
   }
+  
+  insertAtPos(val, pos, head) {
+    const node = new Node(val);
+    if(pos === 1) {
+      node.next = head;
+      return node;            
+    }
+
+    let prev = null; let curr = head; let count = 1;
+    while (count !== pos && curr !== null) {
+      prev = curr;
+      curr = curr.next;
+      count++;
+    };
+
+    if (curr === null) {
+      console.log('Position out of bound');
+      return;
+    };
+
+    node.next = prev.next;
+    prev.next = node;
+    return node;
+  };
 
   printLL(head) {
     let newNode = head;
@@ -40,8 +64,19 @@ class LinkedList {
       ll += newNode.val + ' -> '
       newNode = newNode.next;
     }
-    console.log(ll);
+    console.log(ll.slice(0, -4));
   };
+
+  length(head) {
+    let curr = head;
+    let count = 0;
+    while(curr !== null) {
+      count++;
+      curr = curr.next;
+    };
+    console.log(count);
+  };
+  
 };
 
 const list = new LinkedList();
@@ -49,11 +84,15 @@ const list = new LinkedList();
 const head = list.insertAtHead(6);
 list.insertAtTail(7, head);
 list.insertAtTail(8, head);
+
 list.insertAtTail(9, head);
 list.insertAtTail(10, head);
 list.insertAtTail(11, head);
 
 const newHead = list.insertAtHead(5, head);
 
-list.printLL(newHead);
+const newHead2 = list.insertAtPos(0, 1, newHead);
+
+list.printLL(newHead2);
+list.length(newHead2);
 

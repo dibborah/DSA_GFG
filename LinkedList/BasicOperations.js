@@ -96,5 +96,5 @@ list.insertAtTail(1);
 list.insertAtTail(13);
 list.insertAtHead(100);
 
-console.log('Initial List:');
-list.printLL();
+// console.log('Initial List:');
+// list.printLL();
