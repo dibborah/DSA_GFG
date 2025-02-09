@@ -76,23 +76,38 @@ class LinkedList {
     };
     console.log(count);
   };
+
+  search(key, head) {
+    let curr = head;
+    while(curr !== null) {
+      if(curr.val === key) {
+        console.log(key + ': key found');
+        return;
+      };
+      curr = curr.next;
+    };
+
+    console.log(key + ': not found');    
+  };
   
 };
 
 const list = new LinkedList();
 
-const head = list.insertAtHead(6);
+const head = list.insertAtHead(5);
+list.insertAtTail(6, head);
 list.insertAtTail(7, head);
-list.insertAtTail(8, head);
 
+list.insertAtTail(8, head);
 list.insertAtTail(9, head);
 list.insertAtTail(10, head);
-list.insertAtTail(11, head);
 
-const newHead = list.insertAtHead(5, head);
+// list.insertAtTail(11, head);
+// const newHead = list.insertAtHead(5, head);
+// const newHead2 = list.insertAtPos(0, 1, newHead);
 
-const newHead2 = list.insertAtPos(0, 1, newHead);
+// list.printLL(newHead2);
+// list.length(newHead2);
 
-list.printLL(newHead2);
-list.length(newHead2);
+list.search(67, head);
 
