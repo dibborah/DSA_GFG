@@ -114,14 +114,16 @@ class LinkedList {
   };  
 };
 
-const list = new LinkedList();
+const list1 = new LinkedList();
+const list2 = new LinkedList();
 
-const head = list.insertAtHead(2);
-list.insertAtTail(5, head);
-list.insertAtTail(6, head);
+const head1 = list1.insertAtHead(1);
+list1.insertAtTail(2, head1);
+list1.insertAtTail(4, head1);
 
-list.insertAtTail(2, head);
-list.insertAtTail(1, head);
+const head2 = list2.insertAtHead(1);
+list2.insertAtTail(3, head2);
+list2.insertAtTail(4, head2);
 
 
 // list.insertAtTail(9, head);
@@ -179,33 +181,85 @@ list.insertAtTail(1, head);
  *         this.data = x
  *         this.next = null
  *     }
- * }
- * @param {Node} head
- * @returns {Node}
- */
+//  * }
+//  * @param {Node} head
+//  * @returns {Node}
+//  */
+
+// class Solution {
+//   // Function to move last element to front in a linked list.
+//   moveToFront(head) {
+//     let prev = null
+//     let curr = head;
+//     while(curr.next !== null) {
+//       prev = curr;
+//       curr = curr.next;
+//     };
+
+//     if(prev === null)
+//       return curr;
+
+//     prev.next = null;
+//     curr.next = head;
+//     return curr;
+//   };
+// };
+
+
+// list.printLL(head);
+// const solution = new Solution();
+// if (!head) return head;
+// const newHead = solution.moveToFront(head);
+// list.printLL(newHead);
+
+
+
+// Merge two sorted linked lists
+
+// Given the head of two sorted linked lists consisting of nodes respectively. The task is to merge both lists and return the head of the sorted merged list.
+
+/*
+class Node{
+    constructor(data){
+        this.data = data;
+        this.next = null;
+    }
+}
+*/
+
+list1.printLL(head1);
+list2.printLL(head2);
 
 class Solution {
-  // Function to move last element to front in a linked list.
-  moveToFront(head) {
-    let prev = null
-    let curr = head;
-    while(curr.next !== null) {
-      prev = curr;
-      curr = curr.next;
+  sortedMerge(head1, head2) {
+    let dummyNode = new Node(-1);
+    let temp = dummyNode;
+    let c1 = head1;
+    let c2 = head2;
+    while(c1 !== null && c2 !== null ) {
+      if(c1.val < c2.val) {
+        temp.next = c1;
+        temp = c1;
+        c1 = c1.next;
+        temp.next = null;      
+      }else{
+        // curr2.val < curr1.val
+        temp.next = c2;
+        temp = c2;
+        c2 = c2.next;
+        temp.next = null;
+      }
+    }
+    if(c2 === null) {
+      temp.next = c1;
+    }else {
+      temp.next = c2;
     };
-
-    if(prev === null)
-      return curr;
-
-    prev.next = null;
-    curr.next = head;
-    return curr;
+    return dummyNode.next;
   };
 };
 
-
-list.printLL(head);
 const solution = new Solution();
-if (!head) return head;
-const newHead = solution.moveToFront(head);
-list.printLL(newHead);
+const sortedHead = solution.sortedMerge(head1, head2);
+list1.printLL(sortedHead)
+
