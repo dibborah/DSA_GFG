@@ -117,13 +117,13 @@ class LinkedList {
 const list1 = new LinkedList();
 const list2 = new LinkedList();
 
-const head1 = list1.insertAtHead(1);
-list1.insertAtTail(2, head1);
-list1.insertAtTail(4, head1);
+// const head1 = list1.insertAtHead(1);
+// list1.insertAtTail(2, head1);
+// list1.insertAtTail(4, head1);
 
-const head2 = list2.insertAtHead(1);
-list2.insertAtTail(3, head2);
-list2.insertAtTail(4, head2);
+// const head2 = list2.insertAtHead(1);
+// list2.insertAtTail(3, head2);
+// list2.insertAtTail(4, head2);
 
 
 // list.insertAtTail(9, head);
@@ -227,39 +227,88 @@ class Node{
 }
 */
 
+// list1.printLL(head1);
+// list2.printLL(head2);
+
+// class Solution {
+//   sortedMerge(head1, head2) {
+//     let dummyNode = new Node(-1);
+//     let temp = dummyNode;
+//     let c1 = head1;
+//     let c2 = head2;
+//     while(c1 !== null && c2 !== null ) {
+//       if(c1.val < c2.val) {
+//         temp.next = c1;
+//         temp = c1;
+//         c1 = c1.next;
+//         temp.next = null;      
+//       }else{
+//         // curr2.val < curr1.val
+//         temp.next = c2;
+//         temp = c2;
+//         c2 = c2.next;
+//         temp.next = null;
+//       }
+//     }
+//     if(c2 === null) {
+//       temp.next = c1;
+//     }else {
+//       temp.next = c2;
+//     };
+//     return dummyNode.next;
+//   };
+// };
+
+// const solution = new Solution();
+// const sortedHead = solution.sortedMerge(head1, head2);
+// list1.printLL(sortedHead)
+
+// 143. Reorder List
+// You are given the head of a singly linked-list. The list can be represented as:
+
+// L0 → L1 → … → Ln - 1 → Ln
+// Reorder the list to be on the following form:
+
+// L0 → Ln → L1 → Ln - 1 → L2 → Ln - 2 → …
+// You may not modify the values in the list's nodes. Only nodes themselves may be changed.
+
+
+const head1 = list1.insertAtHead(1);
+list1.insertAtTail(2, head1);
+list1.insertAtTail(3, head1);
+list1.insertAtTail(4, head1);
+list1.insertAtTail(5, head1);
+
 list1.printLL(head1);
-list2.printLL(head2);
+
+// class Solution {
+//   fun(head) {
+//     let curr = head;
+//     while(curr)
+//   };
+// };
+
+// var reorderList = function(head) {
+//   const solution = new Solution(head);
+//   solution.fun(head);    
+// };
 
 class Solution {
-  sortedMerge(head1, head2) {
-    let dummyNode = new Node(-1);
-    let temp = dummyNode;
-    let c1 = head1;
-    let c2 = head2;
-    while(c1 !== null && c2 !== null ) {
-      if(c1.val < c2.val) {
-        temp.next = c1;
-        temp = c1;
-        c1 = c1.next;
-        temp.next = null;      
-      }else{
-        // curr2.val < curr1.val
-        temp.next = c2;
-        temp = c2;
-        c2 = c2.next;
-        temp.next = null;
-      }
-    }
-    if(c2 === null) {
-      temp.next = c1;
-    }else {
-      temp.next = c2;
+  reverseLL(head){
+    let prev = null;
+    let curr = head;
+    while(curr !== null) {
+      const nextNode = curr.next;
+      curr.next = prev;
+      prev = curr
+      curr = nextNode;
     };
-    return dummyNode.next;
+    return prev;
   };
+
 };
 
 const solution = new Solution();
-const sortedHead = solution.sortedMerge(head1, head2);
-list1.printLL(sortedHead)
+const newHead = solution.reverseLL(head1);
+list1.printLL(newHead);
 

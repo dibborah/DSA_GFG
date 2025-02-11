@@ -48,4 +48,4 @@ class Solution {
 const solution = new Solution();
 const sortedHead = solution.sortedMerge(head1, head2);
 list1.printLL(sortedHead)
-// check the result in the practiceBasic.js file  
+// check the result in the practiceBasic.js file
