@@ -13,21 +13,47 @@
 // Input: nums = [1,0,1,1,0,1]
 // Output: 2
 
-class Solution{
+class Solution {
   // brute force approach done
-  fun(nums) {
-    let ans = 0;
-    for(let i = 0; i < nums.length; i++) {
+  //   O(n^2)
+  //   fun(nums) {
+  //     let ans = 0;
+  //     for(let i = 0; i < nums.length; i++) {
+  //       let temp = 0;
+  //       let k = i;
+  //       while(nums[k] === 1) {
+  //         temp++;
+  //         k++;
+  //       }
+  //       ans = Math.max(ans, temp);
+  //     };
+  //     return ans;
+  //   };
+
+    // optimized appoach ()
+    // O(n)
+    fun(nums) {
+      let ans = 0;
       let temp = 0;
-      let k = i;
-      while(nums[k] === 1) {
-        temp++;
-        k++;
-      }
+    //   for(let i = 0; i < nums.length; i++) {
+    //     if(nums[i] === 0) {
+    //       ans = Math.max(ans, temp);
+    //       temp = 0;
+    //     } else {
+    //         temp++;
+    //     }
+    // }
+      for(const num of nums) {
+        if(num === 0) {
+            ans = Math.max(ans, temp);
+            temp = 0;
+        } else {
+            temp++;
+        };
+      };
       ans = Math.max(ans, temp);
-    };
-    return ans;
-  };
+      return ans;
+   };
 };  
 
 var findMaxConsecutiveOnes = function(nums) {
