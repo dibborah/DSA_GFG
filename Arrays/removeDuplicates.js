@@ -26,15 +26,19 @@ class Solution {
   fun(arr) {
     const n = arr.length;
     let k = 1;
-    let size = 1;
+    // let size = 1;
     for(let i = 1; i < n; i++) {
-      if(arr[i] !== arr[i - 1]) {
+    //   if(arr[i] !== arr[i - 1]) {
+    //     arr[k] = arr[i];
+    //     k++;
+    //     size++;
+    //   };
+      if(arr[k-1] !== arr[i]) {
         arr[k] = arr[i];
         k++;
-        size++;
       };
     };  
-    return size;  
+    return k;  
   };
 };
 
@@ -44,9 +48,9 @@ var removeDuplicates = function(nums) {
 };
 
 
-// const nums1 = [10, 20, 20, 30, 30, 30, 30];
+const nums1 = [10, 20, 20, 30, 30, 30, 30];
 // const nums1 = [1,1,2];
-const nums1 = [0,0,1,1,1,2,2,3,3,4];
+// const nums1 = [0,0,1,1,1,2,2,3,3,4];
 // const size = 7;
 
 console.log(nums1);
