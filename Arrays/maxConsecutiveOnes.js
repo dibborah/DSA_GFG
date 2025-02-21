@@ -45,13 +45,12 @@ class Solution {
     // }
       for(const num of nums) {
         if(num === 0) {
-            ans = Math.max(ans, temp);
-            temp = 0;
+          temp = 0;
         } else {
-            temp++;
+          temp++;
+          ans = Math.max(ans, temp);
         };
       };
-      ans = Math.max(ans, temp);
       return ans;
    };
 };  
@@ -61,6 +60,6 @@ var findMaxConsecutiveOnes = function(nums) {
   return solution.fun(nums);
 };
 
-// const nums = [1,1,0,1,1,1];
-const nums = [1,0,1,1,0,1];
+const nums = [1,1,0,1,1,1];
+// const nums = [1,0,1,1,0,1];
 console.log(findMaxConsecutiveOnes(nums));
