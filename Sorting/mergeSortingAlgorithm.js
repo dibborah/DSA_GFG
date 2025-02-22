@@ -30,12 +30,12 @@ class Solution {
         arr[k] = part1[i];
         i++;
         k++;
-    }
+    };
     while(j < part2.length) {
         arr[k] = part2[j];
         j++;
         k++;
-    }
+    };
   };
   mergeSorting(arr, left, right) {
     if(right > left) {
