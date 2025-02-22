@@ -1,5 +1,8 @@
 
 class Solution{
+    // Using this approach we are starting the loop from the last index
+    // But since we are copying the original array we can now also start
+    // looping from the first index
   fun(arr, low, mid, high) {
     const part1 = [];
     for(let i = low; i < mid + 1; i++) {
