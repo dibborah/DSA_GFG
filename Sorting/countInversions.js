@@ -20,6 +20,7 @@
 //     };
 //   };
 
+// resumeWordIt ATS score
 
 class Solution {
   countAndMerge(arr, low, mid, high) {
@@ -63,10 +64,10 @@ class Solution {
     return result;
   };
   countInversions(arr, left, right) {
-      let count = 0;
+    let count = 0;
     if(right > left) {
       const mid = Math.floor(left + ((right - left) / 2));
-      count += this.countInversions(arr, left, mid); 
+      count += this.countInversions(arr, left, mid);
       count += this.countInversions(arr, mid + 1, right);
       count += this.countAndMerge(arr, left, mid, right);
     };
@@ -74,9 +75,9 @@ class Solution {
   };
   fun(arr) {
     return this.countInversions(arr, 0, arr.length - 1);
-  }
+  };
 };
-  
+
 // const nums = [2, 4, 1, 3, 5];
 // const nums = [2, 3, 4, 5, 6];
 // const nums = [10, 10, 10]
