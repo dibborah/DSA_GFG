@@ -37,11 +37,15 @@ class Solution {
         k++;
     }
   };
-  fun(arr, left, right) {
+  mergeSorting(arr, left, right) {
     if(right > left) {
+        // Remember when using JS use Math.floor to get round off values
+        // Since js return decimal values/accurate values and so if using decimal inputs as indexes in an array while return undefined
+        // As decimal indexes are not possible in JS.
+        // So when divides indexes always use Math.floor to round off values
         const mid = Math.floor(left + ((right - left) / 2));
-        this.fun(arr, left, mid);    
-        this.fun(arr, mid + 1, right);
+        this.mergeSorting(arr, left, mid);    
+        this.mergeSorting(arr, mid + 1, right);
         this.merge(arr, left, mid, right);
     };
   };
@@ -58,5 +62,5 @@ class Solution {
 const nums = [10, 5, 30, 15, 7];
 const solution = new Solution();
 console.log('b/4 sorting', nums);
-solution.fun(nums, 0, 4);
+solution.mergeSorting(nums, 0, 4);
 console.log('a/f sorting', nums);
