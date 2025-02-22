@@ -20,7 +20,7 @@
 //     };
 //   };
 
-// resumeWordIt ATS score
+// resumeWorded ATS score
 
 class Solution {
   countAndMerge(arr, low, mid, high) {
