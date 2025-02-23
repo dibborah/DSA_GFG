@@ -57,57 +57,52 @@ class Node {
 
 
 // Using MergeSort
-
 class Solution {
-  merge(l1, l2) {
-    const result = [];
-    let i = 0; 
-    let j = 0;
-    let k = 0; // while writing merge algo need to make it dynamic b/c of the recursion
-    while(i < l1.length && j < l2.length) {// Also the length of l1 and l2;
-      if(l1[i] < l2[j]) {
-        result[k] = l1[i];
-        i++;
+  mergeLL(l1, l2) {
+    const dummyNode = new Node(-1);
+    let temp = dummyNode;
+    let c1 = l1; 
+    let c2 = l2;
+    while(c1 !== null && c2 !== null) { // Also the length of l1 and l2;
+      if(c1.val <= c2.val) {
+        temp.next = c1;
+        temp = temp.next;
+        c1 = c1.next;
       } else {
-        result[k] = l2[j];
-        j++;
+        temp.next = c2;
+        temp = temp.next;
+        c2 = c2.next;
       }
-      k++;
     }
-    while(i < l1.length) {
-      result[k] = l1[i];
-      i++;
-      k++;
+    if(c1 !== null) {
+      temp.next = c1;
     }
-    while(j < l2.length) {
-      result[k] = l2[j];
-      j++;
-      k++;
+    if(c2 !== null) {
+      temp.next = c2;
     }
-    console.log(result);
+    return dummyNode.next;
   };
   fun(l1, l2) {
+    return this.mergeLL(l1, l2);
   };
 };
 
 
-const list1 = [1, 2, 4];
-const list2 = [1, 3, 4];
+// const list1 = [1, 2, 4];
+// const list2 = [1, 3, 4];
 
 // Converted input arrays to LinkedLists
-// const list1 = new Node(1);
-// list1.next = new Node(2);
-// list1.next.next = new Node(4);
+const list1 = new Node(1);
+list1.next = new Node(2);
+list1.next.next = new Node(4);
 
-// const list2 = new Node(1);
-// list2.next = new Node(3);
-// list2.next.next = new Node(4);
+const list2 = new Node(1);
+list2.next = new Node(3);
+list2.next.next = new Node(4);
 
 const mergeTwoLists = function(list1, list2) {
   const solution = new Solution();
-  return solution.merge(list1, list2);    
+  return solution.fun(list1, list2);    
 };
 
-mergeTwoLists(list1, list2);
-
-// list1.printLL(mergeTwoLists(list1, list2));
+list1.printLL(mergeTwoLists(list1, list2));
