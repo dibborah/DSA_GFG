@@ -12,6 +12,9 @@ class Solution {
       part2[i] = arr[mid + i + 1];
     };
 
+    console.log('p1', part1);
+    console.log('p2', part2);
+
     let i = 0;
     let j = 0;
     let k = low; // k = low is also  crucial vs k = 0
@@ -61,7 +64,8 @@ class Solution {
 // solution.merge(nums, low, mid, high)
 
 // merge Sorting algoritm
-const nums = [10, 5, 30, 15, 7];
+// const nums = [10, 5, 30, 15, 7];
+const nums = [[8,10],[9,18],[0, 1], [1,3],[2,6]];
 const solution = new Solution();
 console.log('b/4 sorting', nums);
 solution.mergeSorting(nums, 0, 4);
