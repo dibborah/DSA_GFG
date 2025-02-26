@@ -46,44 +46,87 @@ list.next.next.next.next = new Node(5);
 // Node.js env in the kingfisher UI proj's
 
 // Recursive solution
-class Solution {
-  fun(head, k) {
-    let curr = head;
-    let prev = null;
-    let pos = 0;
+// class Solution {
+//   fun(head, k) {
+//     let curr = head;
+//     let prev = null;
+//     let pos = 0;
 
-    // First, count the number of nodes to check if there are enough nodes for reversal
-    while (curr !== null && pos < k) {
-      curr = curr.next;
-      pos++;
-    };
+//     // First, count the number of nodes to check if there are enough nodes for reversal
+//     while (curr !== null && pos < k) {
+//       curr = curr.next;
+//       pos++;
+//     };
 
-    if(pos < k) {
-      return head;
-    } else {
-      pos = 0;
-      curr = head;
-    };
+//     if(pos < k) {
+//       return head;
+//     } else {
+//       pos = 0;
+//       curr = head;
+//     };
       
 
-    while(curr !== null && pos < k) {
-      const nextNode = curr.next;
-      curr.next = prev;
-      prev = curr;
-      curr = nextNode;
-      pos++;
-    };
+//     while(curr !== null && pos < k) {
+//       const nextNode = curr.next;
+//       curr.next = prev;
+//       prev = curr;
+//       curr = nextNode;
+//       pos++;
+//     };
 
-    if(curr !== null) {
-      const rest_head = this.fun(curr, k); 
-      head.next = rest_head;
-    };
-    return prev;
-  };
-};
+//     if(curr !== null) {
+//       const rest_head = this.fun(curr, k); 
+//       head.next = rest_head;
+//     };
+//     return prev;
+//   };
+// };
 
 // TC: of the Recursive solution: Theta(n)
 // SC: Theta(nk);
+
+// Iterative Solution
+class Solution {
+  fun(head, k) {
+    let curr = head;
+    let prevFirst = null;
+    let isFirstPass = true;
+    while(curr !== null) {
+        let first = curr;
+        let prev = null;
+        let count = 0;
+        while(curr !== null && count < k) {
+          curr = curr.next;
+          count++;
+        };
+        if(count < k) {
+            prevFirst.next = first;
+            return head;
+        }else {
+            count = 0;
+            curr = first;
+        };
+        while(curr !== null && count < k) {
+          let next = curr.next;
+          curr.next = prev;
+          prev = curr;
+          curr = next;
+          count++;
+        };
+        if(isFirstPass) {
+          head = prev;
+          isFirstPass = false;
+        } else {
+          prevFirst.next = prev;
+        };
+        prevFirst = first;
+    };
+    return head;
+  };
+};
+
+// TC: Theta(N)
+// SC: Constant O(1)
 
 let reverseKGroup = function(head, k) {
   const solution = new Solution();
