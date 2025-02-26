@@ -59,29 +59,56 @@ class Node {
 // Without auxilary space
 // But changing the pointers destroys the LL.
 // This way we cannot recreate the original LL.
+// class Solution {
+//   printLL(head, k = 5) {
+//     let curr = head;
+//     let result = '';
+//     let pos = 1;
+//     while (curr != null && pos < k) {
+//       result += curr.val + ' -> ';
+//       curr = curr.next;
+//       pos++;
+//     };
+//     console.log(result.slice(0, -4)); // Remove trailing ' -> '
+//   };
+//   fun(head) {
+//     let curr = head;
+//     const dummyNode = new Node(-1);
+//     while(curr !== null) {
+//       const nextNode = curr.next;
+//       if(curr.next === dummyNode) {
+//         return true;
+//       }
+//       curr.next = dummyNode;
+//       curr = nextNode;
+//     };
+//     return false;
+//   };
+// };
+
+
+
+// 3rd approch
+// Using Hash set
+// Set takes on avg O(1) Time and space complexity for searching and insertion of values
+// This algo TC and SC is O(n).
+// Benefits of this algo:
+// No adding a new property to the Node structure
+// Not manipulating the LL so original LL is retained and can  be of further use.
+
+// In set we are not storing contents inside objects actually,
+// we are storing objects addresses
 class Solution {
-  printLL(head, k = 5) {
-    let curr = head;
-    let result = '';
-    let pos = 1;
-    while (curr != null && pos < k) {
-      result += curr.val + ' -> ';
-      curr = curr.next;
-      pos++;
-    };
-    console.log(result.slice(0, -4)); // Remove trailing ' -> '
-  };
   fun(head) {
+    const hashSet = new Set();
     let curr = head;
-    const dummyNode = new Node(-1);
     while(curr !== null) {
-      const nextNode = curr.next;
-      if(curr.next === dummyNode) {
+      if(hashSet.has(curr)) {
         return true;
       }
-      curr.next = dummyNode;
-      curr = nextNode;
-    };
+      hashSet.add(curr);
+      curr = curr.next;
+    }
     return false;
   };
 };
@@ -99,5 +126,3 @@ const hasCycle = function(head) {
 };
 
 console.log(hasCycle(list));
-
-// solution.printLL(list, 10);
