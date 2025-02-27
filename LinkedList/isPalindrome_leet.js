@@ -1,3 +1,12 @@
+// Problem Statement: 
+// Leetcode problem: 
+
+// 234. Palindrome Linked List
+
+// Given the head of a singly linked list, return true if it is a 
+// palindrome
+//  or false otherwise.
+
 /**
  * Definition for singly-linked list.
  * function ListNode(val, next) {
@@ -10,12 +19,6 @@
  * @param {ListNode} head
  * @return {boolean}
  */
-
-// 234. Palindrome Linked List
-
-// Given the head of a singly linked list, return true if it is a 
-// palindrome
-//  or false otherwise.
 
 class Node {
   constructor(val) {
