@@ -22,11 +22,10 @@
  *    this.random = random;
  * };
  */
-// se-le
 
-// scap pg
-
-// dta cln
+// selenium
+// data scraping
+// data cleaning
 
 /**
  * @param {_Node} head
@@ -34,29 +33,24 @@
  */
 
 class Node {
-    constructor(val) {
-      this.val = val;
-      this.next = null;
-      this.random = null;
-    };
+  constructor(val) {
+    this.val = val;
+    this.next = null;
+    this.random = null;
   };
+};
   
-  const list = new Node(7);
+const list = new Node(7);
+list.next = new Node(13);
+list.next.next = new Node(11);
+list.next.next.next = new Node(10);
+list.next.next.next.next = new Node(1);
 
-  list.next = new Node(13);
-  list.random = null;
-
-  list.next.next = new Node(11);
-  list.next.random = 0;
-
-  list.next.next.next = new Node(10);
-  list.next.next.random = 4;
-
-  list.next.next.next.next = new Node(1);
-  list.next.next.next.random = 2;
-
-  list.next.next.next.next.next = null;
-  list.next.next.next.next.random = 0;
+list.random = null;
+list.next.random = list;
+list.next.next.random = list.next.next.next.next;
+list.next.next.next.random = list.next.next;
+list.next.next.next.next.random = list;
   
 class Solution {
   printLL(head) {
@@ -74,36 +68,53 @@ class Solution {
   // Complecacy will increase
   
   // Solve using Hash map
-  //   TC: O(n)
+  // TC: O(n)
   // SC: O(n)// Hash map
+  // fun(head) {
+  //   let c1 = head;
+  //   let m = new Map();
+
+  //   while(c1 !== null) {
+  //     m.set(c1, new Node(c1.val));  // deep copy
+  //     c1 = c1.next;      
+  //   };
+
+  //   let c2 = head;
+  //   while(c2 !== null) {
+  //   // adding other information to the deeply copied LList
+  //     let clone = m.get(c2);
+  //     clone.next = m.get(c2.next) ?? null;  
+  //     clone.random = m.get(c2.random) ?? null;   
+  //     c2 = c2.next;
+  //   };
+  //   return m.get(head);
+  // };
+
+  // Solve using O(1) SC:
+  // optimized solution
   fun(head) {
-    let c1 = head;
-    let m = new Map();
-
-    while(c1 !== null) {
-      m.set(c1, new Node(c1.val));  // deep copy
-      c1 = c1.next;      
+    let curr = head;
+    while(curr !== null) {
+      const node = new Node();
+      const nextNode = curr.next;
+      node.val = curr.val;
+      curr.next = node;
+      node.next = nextNode;
+      curr = nextNode; // wrong
     };
-
-    let c2 = head;
-    while(c2 !== null) {
-    // adding other information to the deeply copied LList
-      let clone = m.get(c2);
-      clone.next = m.get(c2.next) ?? null;  
-      clone.random = m.get(c2.random) ?? null;   
-      c2 = c2.next;
-    };
-    return m.get(head);
+    return head;
   };
-  //   Solve using O(1) SC:
 };
 
 const solution = new Solution();
+
 // original List
-// solution.printLL(list);
+console.log('b/4');
+solution.printLL(list);
 
 let copyRandomList = function(head) {
   return solution.fun(head);
 };
 
+console.log('a/f');
 solution.printLL(copyRandomList(list));
