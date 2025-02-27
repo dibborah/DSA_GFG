@@ -22,6 +22,11 @@
  *    this.random = random;
  * };
  */
+// se-le
+
+// scap pg
+
+// dta cln
 
 /**
  * @param {_Node} head
@@ -65,13 +70,37 @@ class Solution {
     };
     console.log(result.slice(0, -4)); // Remove trailing ' -> '
   };
+  // Note: Cannot be solved using spread operator
+  // Complecacy will increase
+  
+  // Solve using Hash map
   fun(head) {
+    let c1 = head;
+    let m = new Map();
+
+    while(c1 !== null) {
+      m.set(c1, new Node(c1.val));  // deep copy
+      c1 = c1.next;      
+    };
+
+    let c2 = head;
+    while(c2 !== null) {
+    // adding other information to the deeply copied LList
+      let clone = m.get(c2);
+      clone.next = m.get(c2.next) ?? null;  
+      clone.random = m.get(c2.random) ?? null;   
+      c2 = c2.next;
+    };
+    return m.get(head);
   };
 };
 
 const solution = new Solution();
 // original List
-solution.printLL(list);
+// solution.printLL(list);
 
-var copyRandomList = function(head) {
+let copyRandomList = function(head) {
+  return solution.fun(head);
 };
+
+solution.printLL(copyRandomList(list));
