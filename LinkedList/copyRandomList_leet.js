@@ -74,6 +74,8 @@ class Solution {
   // Complecacy will increase
   
   // Solve using Hash map
+  //   TC: O(n)
+  // SC: O(n)// Hash map
   fun(head) {
     let c1 = head;
     let m = new Map();
@@ -93,6 +95,7 @@ class Solution {
     };
     return m.get(head);
   };
+  //   Solve using O(1) SC:
 };
 
 const solution = new Solution();
