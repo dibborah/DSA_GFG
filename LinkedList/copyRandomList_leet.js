@@ -93,14 +93,36 @@ class Solution {
   // Solve using O(1) SC:
   // optimized solution
   fun(head) {
-    let curr = head;
-    while(curr !== null) {
+    let c1 = head;
+    while(c1 !== null) {
       const node = new Node();
-      const nextNode = curr.next;
-      node.val = curr.val;
-      curr.next = node;
+      const nextNode = c1.next;
+      node.val = c1.val;
+      c1.next = node;
       node.next = nextNode;
-      curr = nextNode; // wrong
+      c1 = nextNode
+    };
+
+    // 2nd part of setting the random pointers done
+    let c2 = head;
+    while(c2 !== null) {
+
+      // if(c2.random === null) {
+      //   c2.next.random = null;
+      //   c2 = c2.next.next;
+      // };
+
+      c2.next.random = (c2.random === null) ? null : c2.random.next;
+      // c2.next.random = c2.random.next;
+      c2 = c2.next.next;
+    };
+
+
+    // 3rd part is separating the two LLists
+    let c3 = head;
+    while(c3 !== null) {
+      console.log('c3', c3);
+      c3 = c3.next;
     };
     return head;
   };
@@ -118,3 +140,4 @@ let copyRandomList = function(head) {
 
 console.log('a/f');
 solution.printLL(copyRandomList(list));
+
