@@ -1,3 +1,4 @@
+// Strivers + GFG(Plat) + Leetcode
 // Solve using two pointer: Fast and slow approach
 
 // Kth from End of Linked List

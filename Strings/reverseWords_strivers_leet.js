@@ -1,5 +1,5 @@
 
-// Leetcode
+// Leetcode + Strivers
 // 151. Reverse Words in a String
 
 // AWS

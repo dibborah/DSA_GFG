@@ -1,3 +1,4 @@
+// Strivers + GFG(Plat) + Leetcode
 // 21. Merge Two Sorted Lists
 
 // You are given the heads of two sorted linked lists list1 and list2.
