@@ -152,9 +152,52 @@ class Solution {
 //     };
 //     return null;
 //   };
-    fun(head1, head2) {
-      
+
+// Approach 3: Using Hash Set or Set() in JS
+//     fun(head1, head2) {
+//       const hashSet = new Set();
+//       for(let curr = head1; curr !== null; curr = curr.next) {
+//         hashSet.add(curr);
+//       };
+//       for(let curr = head2; curr !== null; curr = curr.next) {
+//         if(hashSet.has(curr)) {
+//             return curr;
+//         };
+//       };
+//       return null;
+//     };
+
+// Approach 4: Using Maths: No Node structure modification + O(1) extra space
+  fun(head1, head2) {
+    let countHead1 = 0;
+    for(let curr = head1; curr !== null; curr = curr.next) {
+        countHead1++;
     };
+
+    let countHead2 = 0;
+    for(let curr = head2; curr !== null; curr = curr.next) {
+        countHead2++;
+    };
+
+    let diffInCount = Math.abs(countHead1 - countHead2);
+
+    let curr1 = countHead1 > countHead2 ? head1 : head2;
+    let curr2 = countHead1 > countHead2 ? head2 : head1;
+
+    while(diffInCount > 0) {
+        curr1 = curr1.next;
+        diffInCount--;
+    };
+
+    while(curr1 !== null && curr2 !== null) {
+      if(curr1 === curr2) {
+        return curr1;
+      }
+      curr1 = curr1.next;
+      curr2 = curr2.next;
+    };
+    return null;
+  };
 };
  
 const getIntersectionNode = function(headA, headB) {
