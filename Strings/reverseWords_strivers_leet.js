@@ -19,6 +19,8 @@
  */
 
 class Solution {
+
+  // Approach 1: Naive solution using Stack:
   fun(s) {
     const stack = [];
 
