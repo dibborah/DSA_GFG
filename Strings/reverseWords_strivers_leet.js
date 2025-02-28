@@ -21,27 +21,56 @@
 class Solution {
 
   // Approach 1: Naive solution using Stack:
+  // Using O(n) auxiliary space: SC: O(n) 
+  // fun(s) {
+  //   const stack = [];
+
+  //   const words = s.trim().split(/\s+/);
+  //   for(const word of words) {
+  //     stack.push(word);
+  //   };
+
+  //   console.log(stack)
+
+  //   let reversedString = '';
+  //   while (stack.length > 0) {
+  //     reversedString += stack.pop();
+  //     if (stack.length > 0) {
+  //       reversedString += ' ';
+  //     };
+  //   };
+
+  //   return reversedString;
+
+  // };
+
+  // Approach 2: Optimized approach
+  // Using O(1) auxiliary space: SC: O(1);
   fun(s) {
-    const stack = [];
-
-    const words = s.trim().split(/\s+/);
-    for(const word of words) {
-      stack.push(word);
-    };
-
-    console.log(stack)
-
-    let reversedString = '';
-    while (stack.length > 0) {
-      reversedString += stack.pop();
-      if (stack.length > 0) {
-        reversedString += ' ';
+    let result = '';
+    let word = '';
+    for(let i = s.length - 1; i >= 0; i--) {
+      if(s.charAt(i) !== ' ') {
+        word = s.charAt(i) + word;
+      } else if(word){
+        if (result) {
+          result = result + ' ' + word;
+        } else {
+          result = word;
+        }
+        word = '';
       };
     };
 
-    return reversedString;
-
-  };
+    if(word) {
+      if(result) {
+        result = result + ' ' + word;
+      } else {
+        result = word;
+      };
+    };
+    return result;
+  }
 };
 
 let reverseWords = function(s) {
@@ -52,6 +81,8 @@ let reverseWords = function(s) {
 // Input: s = "the sky is blue"
 // Output: "blue is sky the"
 
-const s = 'the sky is blue';
-// const s =  '   hello    world    ';
+// const s = 'the sky is blue';
+// const s = '  hello world  ';
+// const s = "a good   example";
+const s =  '   hello    world    ';
 console.log(reverseWords(s))
