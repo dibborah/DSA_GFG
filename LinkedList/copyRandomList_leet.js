@@ -93,6 +93,8 @@ class Solution {
   // Solve using O(1) SC:
   // optimized solution
   fun(head) {
+
+    // 1st part is two create a clone node beside each original node comprising the same value: Done
     let c1 = head;
     while(c1 !== null) {
       const node = new Node();
@@ -103,7 +105,7 @@ class Solution {
       c1 = nextNode
     };
 
-    // 2nd part of setting the random pointers done
+    // 2nd part of setting the random pointers: Done
     let c2 = head;
     while(c2 !== null) {
 
@@ -112,17 +114,28 @@ class Solution {
       //   c2 = c2.next.next;
       // };
 
+      // if(c2 === null) break;
+
       c2.next.random = (c2.random === null) ? null : c2.random.next;
       // c2.next.random = c2.random.next;
       c2 = c2.next.next;
     };
 
+    // this.printLL(head);
 
-    // 3rd part is separating the two LLists
+    // 3rd part is separating the two LLists: Pending
     let c3 = head;
+    const newHead = head.next;
+    let c4 = newHead;
     while(c3 !== null) {
-      console.log('c3', c3);
-      c3 = c3.next;
+      const nextNode = c3.next.next;
+      const nextCloneNode = c4.next === null ? null : c4.next.next;
+
+      c3.next = nextNode;
+      c4.next = nextCloneNode;
+
+      c3 = nextNode;
+      c4 = nextCloneNode;
     };
     return head;
   };
@@ -131,13 +144,13 @@ class Solution {
 const solution = new Solution();
 
 // original List
-console.log('b/4');
-solution.printLL(list);
+// console.log('b/4');
+// solution.printLL(list);
 
 let copyRandomList = function(head) {
   return solution.fun(head);
 };
 
-console.log('a/f');
-solution.printLL(copyRandomList(list));
+// console.log('a/f');
+copyRandomList(list);
 
