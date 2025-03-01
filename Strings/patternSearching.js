@@ -12,27 +12,28 @@ class Solution {
   //   Naive Solution for string searching
   // TC: O((n - m + 1) * m)
   // SC: O(1)
-  //   fun(text, pat) {
-  //     const m = pat.length; // 4
-  //     const n = text.length; // 7
+    // fun(text, pat) {
+    //   const m = pat.length; // 4
+    //   const n = text.length; // 7
   
-  //     // outerLoop:
-  //     for (let i = 0; i <= (n - m); i++) {// This loop runs: n - m + 1 times since its <= (Note we are also running for =)
-  //       for (let j = 0; j < m; j++) {
-  //         if (pat.charAt(j) !== text.charAt(i + j)){
-  //         //   break outerLoop;
-  //           break;
-  //         };
-  //         if (j === m - 1) {
-  //           console.log(i + ' ');
-  //         };
-  //       };
-  //     };
-  //   };
+    //   // outerLoop:
+    //   for (let i = 0; i <= (n - m); i++) {// This loop runs: n - m + 1 times since its <= (Note we are also running for =)
+    //     for (let j = 0; j < m; j++) {
+    //       if (pat.charAt(j) !== text.charAt(i + j)){
+    //       //   break outerLoop;
+    //         break;
+    //       };
+    //       if (j === m - 1) {
+    //         console.log(i + ' ');
+    //       };
+    //     };
+    //   };
+    // };
 
 // Optimization to the naive solution if the characters in the pattern are distinct
 // Improved naive algorithm for distinct
-
+// TC: Theta(n)
+// Remember this alog is only for distinct characters inside a given pattern
   fun(text, pat) {
     const m = pat.length;
     const n = text.length;
@@ -64,11 +65,11 @@ const findPatternIndexes = function(text, pat) {
   return solution.fun(text, pat);
 };
 
-const text = 'ABCABCD'; // 7
-const pat = 'ABCD'; // 4
+// const text = 'ABCABCD'; // 7
+// const pat = 'ABCD'; // 4
 
-// const text = 'ABABABCD'; // 7 // 0, 2
-// const pat = 'ABAB'; // 4
+const text = 'ABABABCD'; // 7 // 0, 2
+const pat = 'ABAB'; // 4
 
 // txt: 'ABABABCD';
 // pat: 'ABAB';
