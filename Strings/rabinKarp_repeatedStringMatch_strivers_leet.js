@@ -13,13 +13,25 @@
  */
 
 class Solution {
+  // Naive solution
+  // Without using Rabin Karp algo
   fun(a, b) {
-    console.log(a);
-    console.log(b);
+    const repeatCount = Math.ceil(b.length / a.length);
+    const repeatedString = a.repeat(repeatCount);
+    
+    if(repeatedString.includes(b)) {
+      return repeatCount;
+    };
+
+    if((repeatedString + a.repeat(1)).includes(b)) {
+      return repeatCount + 1;
+    };
+
+    return -1;
   };
 };
 
-var repeatedStringMatch = function(a, b) {
+let repeatedStringMatch = function(a, b) {
   const solution = new Solution();
   return solution.fun(a, b);
 };
@@ -28,9 +40,12 @@ var repeatedStringMatch = function(a, b) {
 // Input: a = "abcd", b = "cdabcdab"
 // Output: 3
 
-const a = "abcd";
-const b = "cdabcdab";
+// const a = "abcd";
+// const b = "cdabcdab";
 
-repeatedStringMatch(a, b);
+const a = "a";
+const b = "aa";
+
+console.log(repeatedStringMatch(a, b));
 
 
