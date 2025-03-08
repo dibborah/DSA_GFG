@@ -23,7 +23,7 @@ class Solution {
       return repeatCount;
     };
 
-    if((repeatedString + a.repeat(1)).includes(b)) {
+    if((repeatedString + a).includes(b)) {
       return repeatCount + 1;
     };
 
@@ -40,11 +40,11 @@ let repeatedStringMatch = function(a, b) {
 // Input: a = "abcd", b = "cdabcdab"
 // Output: 3
 
-// const a = "abcd";
-// const b = "cdabcdab";
+const a = "abcd";
+const b = "cdabcdab";
 
-const a = "a";
-const b = "aa";
+// const a = "a";
+// const b = "aa";
 
 console.log(repeatedStringMatch(a, b));
 
