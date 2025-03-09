@@ -160,36 +160,74 @@
 
 //optimized lps solution
 
-class Solution3 {
-  fillLps(str, lps) {
+// class Solution3 {
+//   fillLps(str, lps) {
+//     const n = str.length;
+//     let len = 0;
+//     lps[0] = 0;
+//     let i = 1;
+//     while(i < n) {
+//       if(str[i] === str[len]) {
+//         len++;
+//         lps[i] = len;
+//         i++;
+//       } else {
+//         if(len === 0) {
+//           lps[i] = 0;
+//           i++
+//         } else {
+//           len = lps[len - 1]; // 2
+//           // len = 2
+//           /// lps [5-1]// lps[4]
+//         };
+//       };
+//     };
+//   };
+// };
+
+// const solution3 = new Solution3();
+// // const str = 'abacabad';
+// const str = 'abbabb';
+// const lps = [];
+
+
+// solution3.fillLps(str, lps);
+// console.log('lps', lps);
+
+
+// Let's write the optimized lps algorithms after I have fully understood it
+
+class Solution {
+  fillLps(str, lps){
     const n = str.length;
     let len = 0;
     lps[0] = 0;
     let i = 1;
+
+    // No redundant match
+    // We'll use whatever we have already have matched
+    // We are here never matching what we have already have matched
     while(i < n) {
-      if(str[i] === str[len]) {
+      // If the ith index and previously matched prefix index match when increment both the indices
+      if(str[i] === str[len]) { // i always moves forward
         len++;
         lps[i] = len;
         i++;
       } else {
-        if(len === 0) {
+        if (len === 0) {
           lps[i] = 0;
-          i++
+          i++;
         } else {
-          len = lps[len - 1];
+          len = lps[len - 1];          
         };
       };
-    };;;
+    }
   };
 };
 
-const solution3 = new Solution3();
-// const str = 'abacabad';
-const str = 'abbabb';
+const solution = new Solution();
 const lps = [];
-
-
-solution3.fillLps(str, lps);
+const str = "abbabb";
+solution.fillLps(str, lps);
 console.log('lps', lps);
-
 
