@@ -1,3 +1,11 @@
+// Do the 4 approaches of string matching
+// 1. Naive
+// 2. Optimized Naive: For distinct characters
+// 3. Rabin karp(using rolling hash)
+// 4. KMP(LPS)
+// Don this four approaches of string matching
+
+
 class Solution {
     fillLps(str, lps){
       const n = str.length;
