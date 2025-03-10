@@ -64,8 +64,12 @@ class Solution {
 ////////////// 0 1 2 3 4 5 6 7 8 9 10 11
   // const txt = "a b a b c a b a b a a   d ";
 
-  const txt = "ababcababaad";
-  const pat = "ababa";
+  // const txt = "ababcababaad";
+  // const pat = "ababa";
+
+  // const txt = "onionionson";
+  const txt = "onionionsionsk";
+  const pat = "onions";
   solution.kmp(txt, pat);
 
   // solution.fillLps(str, lps);
