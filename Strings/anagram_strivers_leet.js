@@ -43,28 +43,90 @@ class Solution {
   // };
   
   // via sorting 
-  fun(s, t) {
-    const n = s.length;
-    const m = t.length;
+  // fun(s, t) {
+  //   const n = s.length;
+  //   const m = t.length;
     
-    if(n !== m)
-      return false;
+  //   if(n !== m)
+  //     return false;
         
-    const s_ = s.split('').sort();// nlogn
-    const t_ = t.split('').sort();
+  //   const s_ = s.split('').sort();// nlogn
+  //   const t_ = t.split('').sort();
 
-    let i = 0;
-    let j = 0;
+  //   let i = 0;
+  //   let j = 0;
 
-    while(i < n) {
-      if(s_[i] !== t_[j]) {
-        return false;
-      };
-      i++;
-      j++;
+  //   while(i < n) {
+  //     if(s_[i] !== t_[j]) {
+  //       return false;
+  //     };
+  //     i++;
+  //     j++;
+  //   };
+  //   return true;
+  // };
+
+  // Most efficient solution
+  // This approach works in linear time 
+  // Solution in only one traversal : TC: O(n)
+  // fun(s, t) {
+  //   const CHAR = 256;
+
+  //   const n = s.length;
+  //   const m = t.length;
+
+  //   if(s.length !== t.length)
+  //     return false;
+
+  //   const count = [];
+
+  //   for(let i = 0; i < m; i++) {
+  //     count[s.charAt(i)] = 0;
+  //     count[t.charAt(i)] = 0;
+  //   };
+
+  //   for(let i = 0; i < m; i++) {
+  //     count[s.charAt(i)]++;
+  //     count[t.charAt(i)]--;
+  //   };
+
+
+  //   for(let i = 0; i < m; i++) {
+  //     if(count[s.charAt(i)] !== 0) {
+  //       return false;
+  //     };
+  //   };
+
+  //   return true;
+
+  // };
+
+  // via AI
+  // using charCodeAt 
+  // now we are using ASCII by charCodeAt
+  // TC: O(n + CHAR)
+  // SC: O(CHAR)
+  // This approach works in linear time 
+  fun(s, t) {
+    // If lengths are different, they cannot be anagrams
+    if (s.length !== t.length) return false;
+
+    const CHAR = 256;
+  
+    // Create an array for counting character frequencies
+    const count = Array(CHAR).fill(0); // Optimized initialization
+
+  
+    // Iterate through both strings once
+    for (let i = 0; i < s.length; i++) {
+      count[s.charCodeAt(i)]++; // Increment count for s
+      count[t.charCodeAt(i)]--; // Decrement count for t
     };
-    return true;
-  };
+
+    // If all counts are zero, the strings are anagrams
+    return count.every(c => c === 0); // Check if all counts are zero
+  }
+  
 };
 
 let isAnagram = function(s, t) {
