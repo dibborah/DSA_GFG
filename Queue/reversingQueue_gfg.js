@@ -6,35 +6,37 @@
 // b. Recursive
 
 
-class MyStack {
-    constructor() {
-        this.arr = new Array();
-        this.top = -1;
-    };
-    isEmpty() {
-      return this.arr.length === 0;
-    }
-};
+
+// // Iterative solution
+// class MyStack {
+//     constructor() {
+//         this.arr = new Array();
+//         this.top = -1;
+//     };
+//     isEmpty() {
+//       return this.arr.length === 0;
+//     }
+// };
 
 
 
 // Function to push an integer into the stack.
-MyStack.prototype.push =
-  function(x) {
-    this.arr.push(x);
-};
+// MyStack.prototype.push =
+//   function(x) {
+//     this.arr.push(x);
+// };
 
 /**
  * @returns {number}
  */
 
 // Function to remove an item from top of the stack.
-MyStack.prototype.pop = function() {
-  if(this.arr.at(-1)) {
-    return this.arr.pop();
-  };
-  return -1;
-};
+// MyStack.prototype.pop = function() {
+//   if(this.arr.at(-1)) {
+//     return this.arr.pop();
+//   };
+//   return -1;
+// };
 
 // Simple queue
 class MyQueue {
@@ -64,18 +66,40 @@ class MyQueue {
     }
 };
 
+// function reverseQueue(q) {
+//     const s = [];
+//     console.log(q)
+//     while(!q.isEmpty()) {
+//       s.push(q.pop());
+//     };
+
+//     while(s.length !== 0) {
+//       q.push(s.pop());
+//     };
+
+//   };
+
+// const q1 = new MyQueue();
+// q1.push(1);
+// q1.push(2);
+// q1.push(3);
+
+// console.log(q1);
+// reverseQueue(q1);
+// console.log(q1);
+
+
+// Using recursion
 function reverseQueue(q) {
-    const s = [];
-    console.log(q)
-    while(!q.isEmpty()) {
-      s.push(q.pop());
-    };
-
-    while(s.length !== 0) {
-      q.push(s.pop());
-    };
-
+  if (q.isEmpty() === true) {
+    return;
   };
+
+  const x = q.pop();
+  reverseQueue(q);
+  q.push(x);
+};
+
 
 const q1 = new MyQueue();
 q1.push(1);
@@ -85,6 +109,9 @@ q1.push(3);
 console.log(q1);
 reverseQueue(q1);
 console.log(q1);
+
+
+
 
 
 
