@@ -141,14 +141,17 @@ class Queue {
     };
 
     empty() {
-      return this.output.size() > 1 || this.input.size() > 1;
+      if(this.input.isEmpty()) {
+        return this.output.isEmpty();
+      }
+      return this.input.isEmpty();
     };
 
 };
 
 const queue = new Queue()
   
-// queue.push(10);
+queue.push(10);
 
 // queue.push(20);
 // queue.push(30);
