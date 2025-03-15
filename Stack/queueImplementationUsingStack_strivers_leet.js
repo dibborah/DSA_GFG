@@ -89,6 +89,19 @@ class Stack {
 
 // Approach 2: Sinle loop, slightly more Optimized
 // In this approach instead of push : Peek/top & pop() is made expensive
+
+// Now the question is how 2nd appoach is more optimized than the 1st if 1st also took 2 loop
+// and 2nd is also separately taking 2 loops
+// The answer is push here always being (1)
+// The push is a method which is adding element
+// So it being order of N is here
+// Where as pop and peek/top only will sometimes take O(N) and other times O(1) 
+// So this way this is more optimized than the former one
+
+// ***This approach is called AMORTIZED(1): Meaning almost all the time pop and peek is taking O(1)
+// *** But note not all the time it is O(1) like the push is taking so it is called amortized O(1)TC
+
+// We here compared to the earlier apporach reduced the TC from O(N) ===> O(1) AMORTIZED
 class Queue {
     constructor() {
         this.input = new Stack();
