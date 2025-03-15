@@ -29,33 +29,16 @@ class MyStack{
     constructor() {
       this.q1 = new MyQueue();
     };
-    // push(x) {
-    //   const s = [];
-
-    //   console.log(this.q1)
-      
-    //   console.log(this.q1.pop());
-    //   while(!this.q1.isEmpty) {
-    //     console.log(this.q1.pop());
-    //     s.push(this.q1.pop());
-    //   };
-
-    //   console.log(s)
-
-    //   s.push(x);
-
-    //   while(s.length) {
-    //     this.q1.push(stack.pop());
-    //   };
-    // };
 
     push(x) {
-        const s = [];
-        while(this.q1.isEmpty() === false) {
-          s.push(this.q1.pop());
-        }
-        s.push(x);
-        this.q1.push(x);
+      this.q1.push(x);
+
+      let size = this.q1.size();
+      while(size > 1) {
+        this.q1.push(this.q1.pop());
+        size--;
+      };
+
     }
     pop() {
       if(this.q1.isEmpty()) return -1;
