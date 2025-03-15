@@ -11,6 +11,11 @@
 // boolean empty() Returns true if the stack is empty, false otherwise.
 
 
+// Here I am using two queue and at last swapping the two queues
+
+// The TC is O(n) since I am iteration a whole queue element by element for swapping purpoose
+// SC: O(n) : 2N(needing 2 queue) or near O(n)
+
 class MyQueue {
   constructor() {
     this.item = [];
