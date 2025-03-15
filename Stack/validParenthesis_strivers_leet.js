@@ -56,6 +56,11 @@ class MyStack {
     }
 }
 
+// TC: O(N);
+// SC: O(N);
+
+// The SC: cannot be more optimized since in order to match and check we need to store and keep the open brackts somewhere
+// TC: (Need to double verify this statement by GPT): Also cannot be optimized since to match we need to iterate the characters in the string
 class Solution{
   fun(s) {
     const stack = new MyStack();
@@ -64,6 +69,7 @@ class Solution{
         if(ch === '(' || ch === '{' || ch === '[') {
             stack.push(ch);
         } else{
+            if(stack.isEmpty()) return false;
             if(
               (ch === ')' && stack.peek() === '(')
               || (ch === '}' && stack.peek() === '{')
@@ -84,10 +90,11 @@ let isValid = function(s) {
   return solution.fun(s);
 };
 
-const s = "()";
+// const s = "()";
 // const s = "()[]{}"
 // const s  = "([])";
 // const s = "(]"
 // const s = '(';
+// const s = '}}}';
 
 console.log(isValid(s));
