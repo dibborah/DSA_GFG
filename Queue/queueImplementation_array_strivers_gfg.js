@@ -12,8 +12,7 @@ class MyQueue {
   constructor(){
   	this.front = 0;
   	this.rear = 0;
-  	// this.arr = new Array(100005);
-  	this.arr = new Array(5);
+  	this.arr = new Array(100005);
   };
 
   //Function to push an element x in a queue.
