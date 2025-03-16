@@ -118,9 +118,9 @@ let nextGreaterElement2 = function(nums1, nums2) {
   
 
 // Test cases
-// const nums1 = [4,1,2], nums2 = [1,3,4,2];
+const nums1 = [4,1,2], nums2 = [1,3,4,2];
 // const nums1 = [2,4], nums2 = [1,2,3,4];
 // const nums1 = [4,1,2], nums2 = [1,2,3,4];
-const nums1 = [1,3,5,2,4], nums2 = [6,5,4,3,2,1,7];
+// const nums1 = [1,3,5,2,4], nums2 = [6,5,4,3,2,1,7];
 
 console.log(nextGreaterElement2(nums1, nums2));

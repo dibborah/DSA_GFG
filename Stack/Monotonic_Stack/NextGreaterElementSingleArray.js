@@ -56,4 +56,4 @@ class Solution2 {
 };
 
 const solution2 = new Solution2();
-console.log(solution2.findNGE(arr2));
+console.log(solution2.findNGE(arr1));
