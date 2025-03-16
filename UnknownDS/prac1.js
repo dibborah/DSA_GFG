@@ -17,9 +17,16 @@
  * @return {number[]}
  */
 
-// The solution is not yet fine
-
+// Naive or Brute force approach
+// TC: for element of arr1 we are running two loop in arr2
+// 1st to find the arr1 element in arr2 and then to find the next greater element of it
+// So the inner loop TC: will be O(M + M) => O(2M) => O(M)
+// The TC of the outer loop is clear O(N)
+// So Total TC: O(N * M)
+// SC: O(N): We would need that to store and return the result
+// We as a good practice never manipulate the given array unless it is told to 
 class Solution {
+    // Brute force approach
     fun(arr1, arr2) {
         const n = arr1.length;
         const m = arr2.length;
@@ -28,15 +35,20 @@ class Solution {
         console.log(result);
 
         for(let i = 0; i < n; i++) {
-            for(let j = 0; j < m; j++) {
-              if(arr1[i] === arr2[j] && arr2[j + i] && arr2[j + i] > arr1[i]) {
-                result[i] = arr2[j + i];
-                break;
-              };
-            };
-        };
+            const num = arr1[i];
 
-        console.log(result)
+            for(let j = 0; j < m; j++) {
+                if(num === arr2[j]) {
+                    for(let k = j + 1; k < m; k++) {
+                        if(arr2[k] > num) {
+                          result[i] = arr2[k];
+                          break;
+                        };
+                    };
+                };
+            };
+
+        };
 
         return result;
     };
@@ -47,8 +59,9 @@ let nextGreaterElement = function(nums1, nums2) {
   return solution.fun(nums1, nums2);
 };
 
+// Test cases
 // const nums1 = [4,1,2], nums2 = [1,3,4,2];
-
-const nums1 = [2,4], nums2 = [1,2,3,4];
+// const nums1 = [2,4], nums2 = [1,2,3,4];
+const nums1 = [4,1,2], nums2 = [1,2,3,4];
 
 console.log(nextGreaterElement(nums1, nums2));
