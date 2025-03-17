@@ -17,73 +17,83 @@
 // You must implement a solution with O(1) time complexity for each function.
 
 
-class Solution {
-    constructor() {
-        this.min_stack = [];
-    };
+// class MinStack {
+//     constructor() {
+//         this.min_stack = [];
+//     };
 
-    push(x) {
-        const getNewMin = () => {
-           const currentMin = this.getMin();
-           return  x < currentMin ? x : currentMin;
-        };
-        const obj = {
-          min: this.min_stack.length === 0 ? x : getNewMin(),
-          val : x,
-        };
-        this.min_stack.push(obj);
-    };
+//     push(x) {
+//         const getNewMin = () => {
+//            const currentMin = this.getMin();
+//            return  x < currentMin ? x : currentMin;
+//         };
+//         const obj = {
+//           min: this.min_stack.length === 0 ? x : getNewMin(),
+//           val : x,
+//         };
+//         this.min_stack.push(obj);
+//     };
 
-    pop() {
-        const element = this.min_stack.pop().val;
-        return element;
-    };
+//     pop() {
+//         const element = this.min_stack.pop().val;
+//         return element;
+//     };
 
-    top() {
-        return this.min_stack.at(-1).val;
-    };
+//     top() {
+//         return this.min_stack.at(-1).val;
+//     };
 
-    getMin() {
-        return this.min_stack.at(-1).min;
-    };
-}
+//     getMin() {
+//         return this.min_stack.at(-1).min;
+//     };
+// }
 
 
-// let MinStack = function() {
-// };
+let MinStack = function() {
+    this.min_stack = [];
+};
 
 /** 
  * @param {number} val
  * @return {void}
  */
 
-// MinStack.prototype.push = function(val) {
-    
-// };
+MinStack.prototype.push = function(val) {
+    const getNewMin = () => {
+        const currentMin = this.getMin();
+        return  val < currentMin ? val : currentMin;
+     };
+     const obj = {
+       min: this.min_stack.length === 0 ? val : getNewMin(),
+       val,
+     };
+     this.min_stack.push(obj);    
+};
 
 /**
  * @return {void}
  */
 
-// MinStack.prototype.pop = function() {
-    
-// };
+MinStack.prototype.pop = function() {
+    const element = this.min_stack.pop().val;
+    return element;    
+};
 
 /**
  * @return {number}
  */
 
-// MinStack.prototype.top = function() {
-    
-// };
+MinStack.prototype.top = function() {
+    return this.min_stack.at(-1).val;  
+};
 
 /**
  * @return {number}
  */
 
-// MinStack.prototype.getMin = function() {
-    
-// };
+MinStack.prototype.getMin = function() {
+    return this.min_stack.at(-1).min;    
+};
 
 /** 
  * Your MinStack object will be instantiated and called as such:
@@ -94,14 +104,15 @@ class Solution {
  * var param_4 = obj.getMin()
  */
 
-const solution = new Solution();
-solution.push(-2);
-solution.push(0);
-solution.push(-3);
+const obj = new MinStack();
+obj.push(-2);
+obj.push(0);
+obj.push(-3);
 
-console.log(solution.getMin());
-console.log(solution.pop());
+console.log(obj.getMin());
+console.log(obj.pop());
 
-console.log(solution.top());
-console.log(solution.getMin());
+console.log(obj.top());
+console.log(obj.getMin());
+
 
