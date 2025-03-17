@@ -173,7 +173,7 @@ class MinStack2 {
   };
 };
 
-const obj2 = new MinStack(2);
+const obj2 = new MinStack2(2);
 obj2.push(-2);
 obj2.push(0);
 obj2.push(-3);
