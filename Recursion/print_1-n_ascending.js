@@ -4,7 +4,8 @@ class Solution {
             return
         };
         this.printAscending(n - 1);
-        console.log(n);
+        // This is a non-tail recursion 
+        console.log(n);// extra operation after the recursive call returns
     };
 };
 
