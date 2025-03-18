@@ -28,6 +28,9 @@
 // Approach 1 
 // Brute force
 
+// TC for the next function : O(no. of days from now)
+// SC: Total number of next calls from now.
+
 class Solution1 {
     constructor () {
         this.stocks = [];
@@ -53,7 +56,7 @@ console.log(solution1.fun(100));
 console.log(solution1.fun(80));
 console.log(solution1.fun(60));
 console.log(solution1.fun(70));
-1
+
 console.log(solution1.fun(60));
 console.log(solution1.fun(75));
 console.log(solution1.fun(85));
@@ -77,9 +80,10 @@ StockSpanner1.prototype.next = function(price) {
     for (let i = this.stocks.length - 1; i >= 0; i--) {
         if (price >= this.stocks[i]) {
             stock_span++;
-            continue;
-        };
-        break;
+            // continue;
+        } else {
+            break;
+        }
     };
     this.stocks.push(price);
     return stock_span;
@@ -90,3 +94,11 @@ StockSpanner1.prototype.next = function(price) {
  * var obj = new StockSpanner1()
  * var param_1 = obj.next(price)
  */
+
+// ---------------------------------------------
+
+// Optimized approach
+
+class Solution2 {
+    fun(x) {};
+};
