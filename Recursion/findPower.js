@@ -9,3 +9,6 @@ class Solution {
 };
 const solution = new Solution();
 console.log(solution.findPower(3, 3));
+
+// TODO the optimized approach of finding power
+
