@@ -32,6 +32,16 @@
 // TC for the next function : O(no. of days from now)
 // SC: Total number of next calls from now.
 
+
+// 1. Brute force 
+// TC: O(No of span days in each stock price );
+// SC: O(Next called)
+
+// Idea: Will add every element in an array: 
+// We will initial a count variable = 1;
+// We will than run a loop starting from the current element towards 0 backsides.
+// When elements backwards are less than or equal increase count++ or else break;
+
 class Solution1 {
     constructor () {
         this.stocks = [];
@@ -100,15 +110,23 @@ StockSpanner1.prototype.next = function(price) {
 
 // Optimized approach
 
+// TC: O(2 * Next called);
+// SC: O(Next called)(We are storing pairs of data(value, index))
+
+// Idea: We will maintain a stack containing the PREVIOUS GREATER ELEMENT AND ITS INDEX.
+// The stack will provide us the information that what is the current element's previous greater element Index
+// So using the pse index and the current index we will calculate the no. of elements before that including the current element and excluding the previous greater .
+
+// TC: will be figured out for the overall call
+// . TC for individual calls will not be practical to be figured out since if the every element in the top of the stack 
+// is greater than the current element than the TC for that NEXT() call will be O(1). So TC: (2 * N) is the overall TC.
+
+// #Note : The TC for the optimal approach is not for the individual calls but for the overall calls
+
 class Solution2 {
     constructor() {
         this.stack = [];
         this.index = -1;
-    };
-
-    stockSpanner() {
-        this.index = -1;
-        this.stack.pop();
     };
 
     fun(x) {
