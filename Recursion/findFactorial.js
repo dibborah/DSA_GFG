@@ -8,3 +8,6 @@ class Solution {
 
 const solution = new Solution();
 console.log(solution.findFactorial(-1));
+
+// TC: O(N)
+// SC:O(N)
