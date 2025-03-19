@@ -3,6 +3,9 @@
 
 
 // Approach 2: Optimized approach
+// TC: O(2^N + 2^N log 2^N(for sorting))
+// SC: O(2^N)
+// Auxilliary SC: O(N); At most the recussion call stack will be N long
 class Solution1 {
     // Using pick and non-pick approach at every function call
     fun(arr, result, n, temp, i) {
