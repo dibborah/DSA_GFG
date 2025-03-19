@@ -18,6 +18,15 @@
 // Whenever we have an array and we have to go for some kind of combination always go for 
 // the pick and non-pick approach
 
+
+// This is a optimized approach to this problem
+// Using pick and non-pick approach
+
+// TC: O(2^T * k)(Exponential)
+// Need to understand this below statement  
+// SC: O(k * x(combination)) {We are not sure how many combination will be there that is completly uncertain}
+// Aux SC: O(N)
+
 class Solution {
     fun(arr, target, result, n, currentSum, temp, i) {
         if(currentSum === target) {
@@ -35,10 +44,8 @@ class Solution {
             temp.push(arr[i]);
             this.fun(arr, target, result, n, currentSum + arr[i], temp, i);
             temp.pop();
-            this.fun(arr, target, result, n, currentSum, temp, i + 1);
-        } else {
-            this.fun(arr, target, result, n, currentSum, temp, i + 1);
         };
+        this.fun(arr, target, result, n, currentSum, temp, i + 1);
     };
 
     combinationSum (arr, target) {
