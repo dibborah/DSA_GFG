@@ -7,7 +7,6 @@
 // Given an array nums of distinct integers, return all the possible permutations. You can return the answer in any order.
 
 class Solution {
-
   swap(arr, i, j) {
     const temp = arr[i];
     arr[i] = arr[j];
@@ -26,6 +25,7 @@ class Solution {
         this.swap(arr, k, i);
     };
   };
+
   permutations (arr) {
     const result = [];
     this.fun(arr, 0, arr.length, result);

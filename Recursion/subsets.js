@@ -1,5 +1,9 @@
-class Solution1 {
+// The brute force approach of the findSubsets and this Subset Sum is remaining
 
+
+
+// Approach 2: Optimized approach
+class Solution1 {
     // Using pick and non-pick approach at every function call
     fun(arr, result, n, temp, i) {
         if (i === n) {
