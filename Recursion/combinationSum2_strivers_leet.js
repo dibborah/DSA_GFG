@@ -61,6 +61,7 @@ class Solution {
 
 
 // const candidates = [10, 1, 2, 7, 6, 1, 5], target = 8;
-const candidates = [2,5,2,1,2], target = 5;
+// const candidates = [2,5,2,1,2], target = 5;
+const candidates = [1, 1, 1, 2, 2], target = 4;
 const solution = new Solution();
 console.log(solution.combinationSum2(candidates, target));
