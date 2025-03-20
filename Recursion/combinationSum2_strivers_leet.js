@@ -21,6 +21,12 @@
 // ]
 
 
+// Optimized approach Done: 
+// TC: O(2^N * K (avg length of k)) + NlogN(For sorting)
+// SC: O(K * x (Uncertain no . of combinations))
+// Aux SC: O(N);
+
+// We are using the subsequence pattern to solve this problem
 class Solution {
     fun(arr, target, result, n, currentSum, temp, i) {
         if(currentSum === target) {
@@ -41,7 +47,6 @@ class Solution {
                 this.fun(arr, target, result, n, currentSum + arr[j], temp, j + 1);
                 temp.pop();
             };
-            this.fun(arr, target, result, n, currentSum, temp, j + 1);
         };
 
     };
@@ -55,7 +60,7 @@ class Solution {
 };
 
 
-const candidates = [10, 1, 2, 7, 6, 1, 5], target = 8;
-// const candidates = [2,5,2,1,2], target = 5;
+// const candidates = [10, 1, 2, 7, 6, 1, 5], target = 8;
+const candidates = [2,5,2,1,2], target = 5;
 const solution = new Solution();
 console.log(solution.combinationSum2(candidates, target));
