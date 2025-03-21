@@ -12,6 +12,10 @@
 // Input: s = "aab"
 // Output: [["a","a","b"],["aa","b"]]
 
+// TC: 2^N * K * K
+// SC: x
+// Aux SC: O(N)
+
 class Solution {
     isPalindrom(s) {
         let i = 0;
@@ -26,16 +30,16 @@ class Solution {
         return true;
     };
 
-    fun (s, n, result, temp, i) {
-        if (i === n) {
+    fun (s, n, result, temp, k) {
+        if (k === n) {
             result.push([...temp]);
             return;
         };
 
-        for (let j = i; j < n; j++) {
-            if (this.isPalindrom(s.substring(i, j + 1))) {
-                temp.push(s.substring(i, j + 1));
-                this.fun(s, n, result, temp, j + 1);
+        for (let i = k; i < n; i++) {
+            if (this.isPalindrom(s.substring(k, i + 1))) {
+                temp.push(s.substring(k, i + 1));
+                this.fun(s, n, result, temp, i + 1);
                 temp.pop();
             };
         };
