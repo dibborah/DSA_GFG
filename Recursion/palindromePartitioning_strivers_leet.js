@@ -26,21 +26,21 @@ class Solution {
         return true;
     };
 
-    fun(s, n, result, temp, i) {
-        if(i === n) {
+    fun (s, n, result, temp, i) {
+        if (i === n) {
             result.push([...temp]);
             return;
         };
 
-        if(this.isPalindrom(s.substring(i, i + 1))) {
-            temp.push(s.substring(i, i + 1));
-            this.fun(s, n, result, temp, i + 1);
-            temp.pop();
-            this.fun(s, n, result, temp, i + 1);
-        } else {
-            this.fun(s, n, result, temp, i + 1);
+        for (let j = i; j < n; j++) {
+            if (this.isPalindrom(s.substring(i, j + 1))) {
+                temp.push(s.substring(i, j + 1));
+                this.fun(s, n, result, temp, j + 1);
+                temp.pop();
+            };
         };
     };
+
     partition(s) {
         const result = [];
         this.fun(s, s.length, result, [], 0);
