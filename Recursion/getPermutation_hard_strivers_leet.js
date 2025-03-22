@@ -21,7 +21,23 @@
 // Input: n = 3, k = 3
 // Output: "213"
 
-class Solution {
+// Brute force approach of getPermutation
+
+// Idea: Find all the permutation of the given array and then return the k-1th permutation since we use zero based indexing
+
+// TC: Find the permutation O(N!) and using Join method O(N) => O(N * N!)
+// Next: We are sorting N! no.'s so N!logN! : Now using stirling approximation
+// LogN! === NLogN so => O(N! * NLogN)
+// So overall Time complexity is  O(N! * NlogN)
+
+// SC: N!(result array) * N(size of each array push in the result array)
+// O(N * N!)
+
+// Auxilary Space: O(N)
+
+
+// Recursion code
+class Solution1 {
     swap(arr, i, j) {
         const temp = arr[i];
         arr[i] = arr[j];
@@ -54,10 +70,47 @@ class Solution {
     };
 }
 
-const solution = new Solution();
+const solution1 = new Solution1();
 
 // const n = 3, k = 3;
 // const n = 4, k = 9;
 // const n = 3, k = 1;
-const n = 3, k = 5;
-console.log(solution.permutation(n, k));
+// const n = 3, k = 5;
+// console.log(solution1.permutation(n, k));
+
+// Optimized approach
+// TC: O(N^2)
+
+
+class Solution2 {
+    getPermutation(n, k) {
+        let fact = 1;
+        let numbers = [];
+        for(let i = 1; i < n; i++) {
+            fact = fact * i;
+            numbers.push(i);
+        };
+        numbers.push(n);
+
+        let ans = '';
+        k = k - 1;
+        while(true) {
+            ans = ans + (numbers[Math.floor(k / fact)] + '');
+            numbers.splice(k / fact, 1);
+            if (!numbers.length) {
+                break;
+            };
+
+            k = k % fact;
+            fact = fact / numbers.length;
+        }
+        return ans;
+    };
+};
+
+// const n = 3, k = 3;
+// const n = 4, k = 9;
+const n = 3, k = 1;
+// const n = 3, k = 5;
+const solution2 = new Solution2();
+console.log(solution2.getPermutation(n, k));
