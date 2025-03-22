@@ -80,6 +80,33 @@ const solution1 = new Solution1();
 
 // Optimized approach
 // TC: O(N^2)
+// SC: O(N);
+
+// Mathematics:
+// Range is equal to (n-1)!
+// kth = (k - 1) b/c of zero based indexing
+// Factorial = Factorial / size(size if defining our factorial)
+// new K = K % fact (That remaining element in that range)
+
+// Idea: We figure out :
+// 1. The first element of our kth permutation
+// Then second
+// Then third and so on and so fourth
+
+// how do we figure out the first element of our kth pemuation
+// We just know at which range of our entire permutaion our permutation will fall
+// Note: Every range starts from a single element: 
+// EX: arr:  [1,2,3]
+// Ranges of arr :
+// 1's Range
+// 2's Range 
+// 3's Range
+
+
+// if our permution falls in 2's Range
+// we get the index and our first element of our final answer will be 2
+
+// Again repeat the process
 
 
 class Solution2 {
