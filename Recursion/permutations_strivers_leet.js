@@ -6,6 +6,10 @@
 // Problem statement
 // Given an array nums of distinct integers, return all the possible permutations. You can return the answer in any order.
 
+// TC: O(2^N)
+// SC: O(N!)
+// Aux SC: O(N)
+
 class Solution {
   swap(arr, i, j) {
     const temp = arr[i];
