@@ -6,9 +6,15 @@
 // Problem statement
 // Given an array nums of distinct integers, return all the possible permutations. You can return the answer in any order.
 
-// TC: O(2^N)
-// SC: O(N!)
-// Aux SC: O(N)
+// TC: O(N!) {No. of permutations} * O(N){inner loop that we are running}
+// Total TC: O(N * N!)
+// The algo will take N time whenever an answer gets entered in the Data Structure
+// SC: O(1) {Not considering the result array O(N!)}
+// Aux Deepth SC: O(N)
+
+// This is the Approach II
+// This approach saves a lot of extra space than approach I
+// No extra space apart from the Aux recursion deepth O(N) and result array O(N!)
 
 class Solution {
   swap(arr, i, j) {
