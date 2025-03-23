@@ -12,16 +12,74 @@
 
 // Approach I (Less efficients{ without using Map})
 class Solution {
+    isSafe(board, col, row, n) {
+        let dupCol = col;
+        let dupRow = row;
+        
+        // check upper left diagonal
+        while(col >= 0 && row >= 0) {
+            if(board[row][col] === 'Q') return false;
+            col--;
+            row--
+        };
+        
+        col = dupCol;
+        row = dupRow;
+        // check left side cells
+        while(col >= 0) {
+            if(board[row][col] === 'Q') return false;
+            col--;
+        }
+        
+        // check lower left diagonal
+        col = dupCol;
+        row = dupRow;
+        while(col >= 0 && row < n) {
+            if(board[row][col] === 'Q') return false;
+            col--;
+            row++;
+        };
+
+        return true;
+    }
+
+    solve(ans, board, n, col) {
+        if(col === n) {
+            ans.push(board.map(row => row.join('')));
+            return;
+        }
+
+        for(let row = 0; row < n; row++) {
+            if(this.isSafe(board, col, row, n)) {
+                board[row][col] = 'Q';
+                this.solve(ans, board, n, col + 1);
+                board[row][col] = '.';
+            }
+        }
+    }
+
     solveNQueens(n) {
         let ans = [];
         let board = [];
-        let s = '.'.repeat(n);
+        let s = new Array(n).fill('.');
+        
+        // One line code to create the board
+        // let board = new Array(n).fill().map(() => new Array(n).fill('.'));
 
-        for(let i = 0; i < n; i++) {
-            board[i] = s;
+
+        for (let i = 0; i < n; i++) {
+            // deep copy is required
+            board[i] = [...s];
         }
+
+        this.solve(ans, board, n, 0);
+        return ans;
     }
 }
 
 const solution = new Solution();
-console.log(solution.solveNQueens(4));
+// const n = 4;
+// const n = 1;
+// const n = 2;
+// const n = 3;
+console.log(solution.solveNQueens(n));
