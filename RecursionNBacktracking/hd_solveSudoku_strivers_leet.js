@@ -13,43 +13,39 @@
 
 
 class Solution1 {
-    isSafe(board, row, col, val) {
-        let dupRow = row;
-
-        while(row >= 0) {
-            if(board[row][col] === val) return false;
-            row--;
+    isValid(board, row, col, c) {
+        for (let i = 0; i < 9; i++) {
+            if (board[row][i] === c) return false;
+            if (board[i][col] === c) return false;
+            if (board[3 * Math.floor(row/3) + Math.floor(i / 3)][3 * Math.floor(col / 3) + (i % 3)] === c) return false; 
         }
-
-        row = dupRow;
-        while(col >= 0) {
-            if(board[row][col] === val) return false;
-            col--;
-        }
-
         return true;
     }
 
-    fun(board, n, col, row) {
-        // base case
-        if(board[col][row] !== '.') {
-            return;
-        }
+    solveSudoku(board) {
+        for(let i = 0; i < board.length; i++) {
+            for (let j = 0; j < board[0].length; j++) {
 
-        // base case ?
-        // How to update the val to different values starting from 1-9
+                if(board[i][j] === '.') {
 
-        for(let row = 0; row < n; row++) {
-            if(board[row][col] === '.' && this.isSafe(board, row, col, col + 1 + '')) {
-                board[row][col] = col + 1 + '';
-                this.fun(board, n, col + 1, row);
-                board[row][col] = '.';
+                    for(let c = 1; c <= 9; c++) {
+                        let char = c + '';
+                        if(this.isValid(board, i , j, char)) {
+                            board[i][j] = char;
+                            if(this.solveSudoku(board) === true) {
+                                return true;                                
+                            } else {
+                                board[i][j] = '.';
+                            }
+                        }
+                    }
+                
+                    return false;
+                }
+
             }
         }
-    }
-
-    solveSudoku(board) {
-        this.fun(board, 9, 0)
+        return true;
     }
 }
 
@@ -67,5 +63,5 @@ const board = [
 
 const solution = new Solution1();
 solution.solveSudoku(board);
-console.log(board);
+console.log(board[0]);
 
