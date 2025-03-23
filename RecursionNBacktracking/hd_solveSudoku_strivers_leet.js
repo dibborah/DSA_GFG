@@ -33,7 +33,7 @@
 
 
 
-class Solution1 {
+class Solution {
     isValid(board, row, col, c) {
         for (let i = 0; i < 9; i++) { // O(1)
             // Always going to fun 9 time since a sudoku is 9 * 9
@@ -83,7 +83,7 @@ const board = [
     [".",".",".",".","8",".",".","7","9"]
 ];
 
-const solution = new Solution1();
+const solution = new Solution();
 solution.solveSudoku(board);
 console.log(board[0]);
 
