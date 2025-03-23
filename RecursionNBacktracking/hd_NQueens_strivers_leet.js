@@ -11,7 +11,7 @@
 
 
 // Approach I (Less efficients{ without using Map})
-class Solution {
+class Solution1 {
     isSafe(board, col, row, n) {
         let dupCol = col;
         let dupRow = row;
@@ -77,9 +77,9 @@ class Solution {
     }
 }
 
-const solution = new Solution();
-// const n = 4;
+const solution1 = new Solution1();
+const n = 4;
 // const n = 1;
 // const n = 2;
 // const n = 3;
-console.log(solution.solveNQueens(n));
+console.log(solution1.solveNQueens(n));
