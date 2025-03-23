@@ -12,9 +12,31 @@
 // The '.' character indicates empty cells.
 
 
+// Algorithm analysis
+
+// Time complexity: 
+// 1. isValid(board, row, col, c)
+// Each check loops over a constant size (9), since a Sudoku board is a fixed size of 9x9. So, this function runs in O(9) = O(1) time.
+
+// 2. solveSudoku():
+// The outer two loops in solveSudoku(board) iterate over all the cells in the board. Since the board is a fixed size (9x9), this takes O(81) iteration
+
+// Thus, the time complexity of the algorithm is exponential in the worst case. Specifically, in the worst case:
+
+// There are 81 empty cells.
+// For each empty cell, the algorithm tries 9 possible values.
+// In the worst case, it would need to try all combinations, leading to a time complexity of O(9^81).
+
+// Summary
+// TC: O(9 ^ 81). But this is hypothetical as input board will have very few empty cells: Almost O(1)
+// Space Complexity: The space complexity is O(1) since the board size is fixed at 9x9 and the recursion depth is at most 81.
+
+
+
 class Solution1 {
     isValid(board, row, col, c) {
-        for (let i = 0; i < 9; i++) {
+        for (let i = 0; i < 9; i++) { // O(1)
+            // Always going to fun 9 time since a sudoku is 9 * 9
             if (board[row][i] === c) return false;
             if (board[i][col] === c) return false;
             if (board[3 * Math.floor(row/3) + Math.floor(i / 3)][3 * Math.floor(col / 3) + (i % 3)] === c) return false; 
