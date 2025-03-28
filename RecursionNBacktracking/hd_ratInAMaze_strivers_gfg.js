@@ -25,41 +25,82 @@
 // Need to understand the time complexity how it became 4^ (n * m)
 // TC: 4^(m * n)
 // Aux Recursion call stack SC: O(m * n)
+
+// Approach I of Rat in a maze
+// Here I have run n seperate if conditions to move to n different direction
+// Less optimized
+// class Solution {
+//   solve(i, j, mat, n, result, path, vis) {
+//     if(i ===  n - 1 && j === n - 1) {
+//       result.push(path);
+//       return;
+//     }
+
+//     // Down
+//    if ((i < n - 1) && (mat[i + 1][j] === 1) && !vis[i + 1][j]) {
+//      vis[i + 1][j] = 1;           
+//      this.solve(i + 1, j, mat, n, result, path + 'D', vis);
+//      vis[i + 1][j] = 0;           
+//     }
+
+//     // Left
+//     if ((j > 0) && (mat[i][j - 1] === 1) && !vis[i][j - 1]) {
+//       vis[i][j - 1] = 1;           
+//       this.solve(i, j - 1, mat, n, result, path + 'L', vis);
+//       vis[i][j - 1] = 0;       
+//     }
+
+//     // Rigth
+//     if ((j < n - 1) && (mat[i][j + 1] === 1) && !vis[i][j + 1]) {
+//       vis[i][j + 1] = 1;           
+//       this.solve(i, j + 1, mat, n, result, path + 'R', vis);
+//       vis[i][j + 1] = 0;       
+//     }
+
+//     // Up
+//     if ((i > 0) && (mat[i - 1][j] === 1) && !vis[i - 1][j]) {
+//       vis[i - 1][j] = 1;           
+//       this.solve(i - 1, j, mat, n, result, path + 'U', vis);
+//       vis[i - 1][j] = 0;       
+//     }
+
+//   }
+
+//   ratInAMaze(mat) {
+//     const result = [];
+//     const vis = [];
+
+//     for(let i = 0; i < mat.length; i++) {
+//       vis[i] = [];
+//     }
+
+//     vis[0][0] = 1;
+//     (mat[0][0] === 1) && this.solve(0, 0, mat, mat.length, result, '', vis);
+//       console.log('vis', vis[4][0]);
+//     return result;
+//   }
+// };
+
+// Optimzed
+// Approach II of rat in a maze
+// Here we won't have n seperate if conditions to move to n different direction
 class Solution {
-  solve(i, j, mat, n, result, path, vis) {
+  solve(i, j, mat, n, result, path, vis, di, dj) {
     if(i ===  n - 1 && j === n - 1) {
       result.push(path);
       return;
     }
 
-    // Down
-   if ((i < n - 1) && (mat[i + 1][j] === 1) && !vis[i + 1][j]) {
-     vis[i + 1][j] = 1;           
-     this.solve(i + 1, j, mat, n, result, path + 'D', vis);
-     vis[i + 1][j] = 0;           
+    const dir = 'DLRU';
+    for(let index = 0; index < 4; index++) {
+      const nexti = i + di[index];
+      const nextj = j + dj[index];
+      if(nexti >= 0 && nextj >=0 && nexti < n && nextj < n && mat[nexti][nextj] === 1 && !vis[nexti][nextj]) {
+        vis[nexti][nextj] = 1;
+        this.solve(nexti, nextj, mat, n, result, path + dir.charAt(index), vis, di, dj);
+        vis[nexti][nextj] = 0;
+      }
     }
-
-    // Left
-    if ((j > 0) && (mat[i][j - 1] === 1) && !vis[i][j - 1]) {
-      vis[i][j - 1] = 1;           
-      this.solve(i, j - 1, mat, n, result, path + 'L', vis);
-      vis[i][j - 1] = 0;       
-    }
-
-    // Rigth
-    if ((j < n - 1) && (mat[i][j + 1] === 1) && !vis[i][j + 1]) {
-      vis[i][j + 1] = 1;           
-      this.solve(i, j + 1, mat, n, result, path + 'R', vis);
-      vis[i][j + 1] = 0;       
-    }
-
-    // Up
-    if ((i > 0) && (mat[i - 1][j] === 1) && !vis[i - 1][j]) {
-      vis[i - 1][j] = 1;           
-      this.solve(i - 1, j, mat, n, result, path + 'U', vis);
-      vis[i - 1][j] = 0;       
-    }
-
   }
 
   ratInAMaze(mat) {
@@ -70,9 +111,11 @@ class Solution {
       vis[i] = [];
     }
 
+    const di = [1, 0, 0, -1];
+    const dj = [0, -1, 1, 0];
+
     vis[0][0] = 1;
-    (mat[0][0] === 1) && this.solve(0, 0, mat, mat.length, result, '', vis);
-      console.log('vis', vis[4][0]);
+    (mat[0][0] === 1) && this.solve(0, 0, mat, mat.length, result, '', vis, di, dj);
     return result;
   }
 };
