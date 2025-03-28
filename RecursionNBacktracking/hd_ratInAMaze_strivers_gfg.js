@@ -29,6 +29,18 @@
 // Approach I of Rat in a maze
 // Here I have run n seperate if conditions to move to n different direction
 // Less optimized
+
+// Time complexity 
+// 1. Maximum Path Length: O(n²)
+// 2. Total Paths: 4^{n²} 
+// 3. Tight Upper Bound: O(3^{n²}) (accounts for backtracking and visited checks).
+
+// Space complexity:
+// 1.Recursion Stack Depth: O(n²)
+// 2. Visited Matrix: O(n²)
+// 3. Result Storage: O(k * n²)
+// Final SC: O(n² + k * n²) 
+
 // class Solution {
 //   solve(i, j, mat, n, result, path, vis) {
 //     if(i ===  n - 1 && j === n - 1) {
@@ -84,6 +96,8 @@
 // Optimzed
 // Approach II of rat in a maze
 // Here we won't have n seperate if conditions to move to n different direction
+//  This 2nd approach is more cleaner but not faster than the one before
+// The time and space complexity here is same
 class Solution {
   solve(i, j, mat, n, result, path, vis, di, dj) {
     if(i ===  n - 1 && j === n - 1) {
